@@ -1,9 +1,18 @@
 # pbftoelastic
 Pushes a set of OpenStreetMap planet files to a Tile Based Elastic Index
 
-##Environment Settings
+##Setup
+Please complete the following steps before you kickoff the elastic indexing. 
+
+###Environment Settings
 Setup the following environment variables to specify the destination elastic cluster. This assumes your elastic cluster has basic authentication enabled.
-1. ES_HOST: my-elasticbeast.azure.cloud.com
-2. ES_PORT: 9200
-3. ES_AUTH_USER: my-username
-4. ES_AUTH_PWD: mypassword
++ ES_HOST: my-elasticbeast.azure.cloud.com
++ ES_PORT: 9200
++ ES_AUTH_USER: my-username
++ ES_AUTH_PWD: mypassword
+
+###Planet File Directory
+Provide the directory location for your planet files 
++ PBF_DIRECTORY: /pbfsource
+ 
+###Setup Elastic Indexes
