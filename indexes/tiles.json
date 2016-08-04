@@ -1,0 +1,24 @@
+{
+    "mappings": {
+        "geotile": {
+            "properties": {
+              "quadKey": {
+                "type": "string"
+              },
+              "quadkey": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              },
+              "timestamp": {
+                "format": "yyy-MM-dd HH:mm:ss",
+                "type": "date"
+              }
+            }
+       }
+    }
+}
