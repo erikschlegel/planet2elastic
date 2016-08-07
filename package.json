@@ -1,0 +1,35 @@
+{
+  "name": "pbftoelastic",
+  "homepage": "https://github.com/erikschlegel/pbftoelastic",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erikschlegel/pbftoelastic.git"
+  },
+  "author": "Erik Schlegel <erik.schlegel@gmail.com>",
+  "version": "1.0.4",
+  "main": "app.js",
+  "engines": {
+    "node": "4.4.x"
+  },
+  "dependencies": {
+    "elasticsearch": "^11.0.1",
+    "geojson-utils": "^1.1.0",
+    "glob": "^7.0.5",
+    "node-fetch": "^1.3.3",
+    "pg": "^4.5.3",
+    "service-utils": "^1.0.21",
+    "tilebelt": "^1.0.1",
+    "turf": "^3.0.14",
+    "wgs84-intersect-util": "^1.0.4"
+  },
+  "scripts": {
+    "build": "babel-node index.js --presets es2015"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "pbf2json": "^3.0.0",
+    "through2": "^2.0.1"
+  }
+}
