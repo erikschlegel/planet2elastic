@@ -67,7 +67,7 @@ Create two new indexes. To create a new index in elastic you provide a PUT reque
 
 ##Import
 ###Configuration
-The mapping features that this framework imports from Openstreetmap is managed in [featureTags.js](https://github.com/erikschlegel/Planet2Elastic/blob/master/featureTags.js). Feel free to add/remove the data attributes that are relevant for your scenario(s).
+The mapping features that this framework imports from Openstreetmap is managed in [featureTags.js](https://github.com/erikschlegel/Planet2Elastic/blob/master/featureTags.js). Feel free to add/remove the data attributes relevant for your scenario(s).
 
 ###Run Importer
 ```
