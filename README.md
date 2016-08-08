@@ -48,7 +48,7 @@ Pushes a set of OpenStreetMap planet files to an Tile Based Elastic Index. You c
 ```
 
 ##Setup
-Please complete the following steps before you kickoff the elastic indexing. This assumes you have some general familiarity with elasticsearch.
+Please complete the following steps before you kickoff the elastic indexing. This assumes you have some general familiarity with elasticsearch. Please refer to this [Gist](https://gist.github.com/erikschlegel/0f4330009c7c5ae83831889609a8bb7c) if you have an Azure subscription and in need of a cloud-based elastic cluster.
 
 ###Environment Settings
 Setup the following environment variables to specify the destination elastic cluster. This assumes your elastic cluster has basic authentication enabled, via [Shield](https://www.elastic.co/guide/en/shield/current/enable-basic-auth.html).
