@@ -65,7 +65,11 @@ Create two new indexes. To create a new index in elastic you provide a PUT reque
 + places: [places index defintion](https://github.com/erikschlegel/pbftoelastic/blob/master/indexes/places.json)
 + tiles: [tiles index definition](https://github.com/erikschlegel/pbftoelastic/blob/master/indexes/tiles.json)
 
-###Kickoff Import
+##Import
+###Configuration
+The mapping features that this framework imports from Openstreetmap is managed in [featureTags.js](https://github.com/erikschlegel/Planet2Elastic/blob/master/featureTags.js). Feel free to add/remove the data attributes that are relevant for your scenario(s).
+
+###Run Importer
 ```
 npm install
 npm run import
