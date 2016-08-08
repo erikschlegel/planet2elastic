@@ -7,6 +7,7 @@
   },
   "author": "Erik Schlegel <erik.schlegel@gmail.com>",
   "version": "1.0.4",
+  "license": "MIT",
   "main": "app.js",
   "engines": {
     "node": "4.4.x"
@@ -15,9 +16,7 @@
     "elasticsearch": "^11.0.1",
     "geojson-utils": "^1.1.0",
     "glob": "^7.0.5",
-    "node-fetch": "^1.3.3",
     "pg": "^4.5.3",
-    "service-utils": "^1.0.21",
     "tilebelt": "^1.0.1",
     "turf": "^3.0.14",
     "wgs84-intersect-util": "^1.0.4"
