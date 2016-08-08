@@ -1,6 +1,5 @@
 "use strict"
 
-import async from 'async';
 import pbf2json from 'pbf2json';
 import through from 'through2';
 import elasticService from './elasticIndexer'
@@ -49,7 +48,7 @@ function handleSinglePointTileWays(wayMapFeatures, wayCountMap){
                 console.log(JSON.stringify(tileEdgePoint));
                 console.log('Formatted:');
                 console.log(JSON.stringify(wayFeature));
-                console.log("tileEdgePoint is either rnull of not a point.");
+                console.log("tileEdgePoint is either null or not a true point.");
                 process.exit();
             }
         }
@@ -68,7 +67,6 @@ function processPbfFile(filename){
     var batchSize = 100;
     let count= 0;
     let tilesToIndex = new Map();
-    let wayExists = false;
     let placesToIndex = new Map();
     let config = {
         tags: FEATURE_TAGS,
@@ -114,7 +112,6 @@ function processPbfFile(filename){
                   };
               }
 
-              wayExists = true;
               feature.coordinates.coordinates[0] = new Array();
               let wayMap = new Map();
               
