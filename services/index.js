@@ -7,16 +7,7 @@ import Quadkey from 'tilebelt';
 import glob from 'glob';
 import turf from 'turf';
 import geoTools from 'wgs84-intersect-util';
-
-const FEATURE_TAGS = [
-  'amenity',
-  'building',
-  'historic',
-  'name',
-  'cuisine',
-  'public_transport',
-  'tourism'
-];
+import featureTags from '../featureTags';
 
 let processedTiles = new Set();
 let tileGeometryPolygon = new Map();
@@ -69,7 +60,7 @@ function processPbfFile(filename){
     let tilesToIndex = new Map();
     let placesToIndex = new Map();
     let config = {
-        tags: FEATURE_TAGS,
+        tags: featureTags.FEATURE_TAGS,
         leveldb: './tmp',
         file: process.env.PBF_DIRECTORY + '/' + filename
     };
@@ -83,7 +74,7 @@ function processPbfFile(filename){
               type: item.type
           };
 
-          FEATURE_TAGS.forEach(featureTag => {
+          featureTags.FEATURE_TAGS.forEach(featureTag => {
               if (!item.tags[featureTag]) return;
 
               feature[featureTag] = item.tags[featureTag];
