@@ -164,7 +164,7 @@ function processPbfFile(filename){
 }
 
 function elasticUpsert(){
-    console.log('services inited');
+    console.log('services initiated');
     
     glob("**/*.pbf", {cwd: process.env.PBF_DIRECTORY}, (er, files) => {
         files.map(file => {
