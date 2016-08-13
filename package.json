@@ -22,7 +22,8 @@
     "wgs84-intersect-util": "^1.0.4"
   },
   "scripts": {
-    "import": "babel-node index.js --presets es2015"
+    "import": "babel-node index.js --presets es2015",
+    "tests": "babel-node ./tests/index.js --presets es2015"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",

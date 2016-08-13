@@ -23,10 +23,10 @@ function elasticClient(){
                 auth: process.env.ES_AUTH_USER + ":" + process.env.ES_AUTH_PWD
                 }
             ],
+            keepAlive: true,
             log: {
-                type: 'file',
-                level: 'info',
-                path: './logs/elasticsearch.log'
+                  type: 'stdio',
+                  levels: ['error', 'warning']
             },
             requestTimeout: 20000
         });
@@ -54,7 +54,29 @@ function transformToElasticBulk(collection, header){
     return body;
 }
 
-function elasticBulkIndex(connection, tilesToIndex, placesToIndex, callback){
+function defaultErrorHandler(response, placesToIndex){
+          response.items.map(item => {
+              if(item.index && item.index.status > 201){
+                  console.error('An elastic error occured while trying to index document ' + item.index["_id"]  + ' to ' + item.index["_index"]);
+                  console.log(JSON.stringify(item));
+                  let place = placesToIndex.get(item.index["_id"]);
+                  console.log(JSON.stringify(place));
+              }
+          });
+}
+
+function invokeElasticSearchQuery(connection, index, type, queryBody, callback){
+    connection.search({
+                    index: index,
+                    type: type,
+                    body: queryBody
+                }, (error, response) => {
+                    callback(response);
+                }
+    );
+}
+
+function elasticBulkIndex(connection, tilesToIndex, placesToIndex, callback, errorHandler){
     let placeIndexHeader = {
         index:  { _index: 'places', _type: 'place'}
     };
@@ -67,15 +89,17 @@ function elasticBulkIndex(connection, tilesToIndex, placesToIndex, callback){
 
     body = body.concat(transformToElasticBulk(tilesToIndex, tilesIndexHeader));
     body = body.concat(transformToElasticBulk(placesToIndex, placeIndexHeader));
-    console.log('Requesting ' + body.length + ' for elastic indexing.');
 
     connection.bulk({
         body: body
     },
     (err, response) => {
-        if(err){
-          console.error('An error occured while trying to index ' + body.length + 'documents to elastic');
-          console.error(JSON.stringify(err));
+        if(response.errors){
+            if (errorHandler && typeof(errorHandler) == "function"){
+                errorHandler(response, placesToIndex);
+            }else{
+                defaultErrorHandler(response, placesToIndex);
+            }
         }else{
             console.log('Succesfully indexed ' + body.length + ' documents. Took: ' + response.took);
         }
@@ -86,5 +110,6 @@ function elasticBulkIndex(connection, tilesToIndex, placesToIndex, callback){
 
 module.exports = {
     elasticBulkIndex: elasticBulkIndex,
-    elasticConnection: elasticClient
+    elasticConnection: elasticClient,
+    invokeElasticSearchQuery: invokeElasticSearchQuery
 }
