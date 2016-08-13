@@ -1,4 +1,6 @@
 # Planet 2 Elastic
+
+[![Join the chat at https://gitter.im/erikschlegel/planet2elastic](https://badges.gitter.im/erikschlegel/planet2elastic.svg)](https://gitter.im/erikschlegel/planet2elastic?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Pushes a set of OpenStreetMap planet files to an Tile Based Elastic Index. You can grab planet files at [GeoFabrik](http://download.geofabrik.de/). This will parse all binary pbf files and index all nodes and ways within their respective tile quadkey location. The end result is an elastic document that looks like the following. Document index convention follows {QuadKey}-{OsmId}
 ```
 {
