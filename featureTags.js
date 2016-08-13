@@ -3,9 +3,10 @@ const FEATURE_TAGS = [
   'building',
   'historic',
   'name',
+  'office',
   'cuisine',
-  'public_transport',
-  'tourism'
+  'highway',
+  'footway'
 ]
 
 module.exports = {
